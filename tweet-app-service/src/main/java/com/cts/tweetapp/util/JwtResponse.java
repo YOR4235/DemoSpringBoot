@@ -1,14 +1,16 @@
 package com.cts.tweetapp.util;
 
 
+import com.cts.tweetapp.model.User;
+import lombok.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class JwtResponse {
-    private final String jwttoken;
- 
-    public JwtResponse(String jwttoken) {
-        this.jwttoken = jwttoken;
-    }
- 
-    public String getToken() {
-        return this.jwttoken;
-    }
+    private User user;
+    private String loginStatus;
+    private String jwtToken;
 }

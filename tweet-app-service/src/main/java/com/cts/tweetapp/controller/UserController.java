@@ -26,6 +26,7 @@ import static com.cts.tweetapp.model.User.SEQUENCE_NAME;
 
 @RestController
 @RequestMapping(value = BASE_URL)
+@CrossOrigin(origins = "*")
 @Slf4j
 public class UserController {
 
@@ -56,9 +57,14 @@ public class UserController {
 
         authenticate.authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        final String jwtToken = jwtUtilToken.generateToken(userDetails);
         System.out.println("Received request to generate token for " + authenticationRequest);
-        return ResponseEntity.ok(new JwtResponse(jwtToken));
+        String jwtToken = jwtUtilToken.generateToken(userDetails);
+        String loginStatus="fail";
+        if(!jwtToken.isEmpty()){
+            System.out.println("token generated");
+            loginStatus="success";
+        }
+        return ResponseEntity.ok(new JwtResponse(userService.getUserByUsername(userDetails.getUsername()),loginStatus,jwtToken));
     }
 
     @PostMapping(value = FORGOT_PASSWORD)

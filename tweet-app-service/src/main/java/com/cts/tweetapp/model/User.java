@@ -38,6 +38,6 @@ public class User {
     private String email;
 
     @NonNull
-    private long mobileNumber;
+    private long contactNumber;
 
 }
