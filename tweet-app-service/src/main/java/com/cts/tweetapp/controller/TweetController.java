@@ -24,7 +24,7 @@ import static com.cts.tweetapp.model.Tweet.SEQUENCE_NAME;
 
 @RestController
 @RequestMapping(value = BASE_URL)
-@CrossOrigin(origins = "http://localhost:4200/home")
+@CrossOrigin
 @Slf4j
 public class TweetController {
     @Autowired

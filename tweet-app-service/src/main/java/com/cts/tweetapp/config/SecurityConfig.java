@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         // We don't need CSRF for this example
-
+        httpSecurity.headers().frameOptions().disable();
         httpSecurity.csrf().disable().authorizeRequests().antMatchers(BASE_URL+REGISTER,BASE_URL+LOGIN  ).permitAll().anyRequest()
                 .authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // Add a filter to validate the tokens with every request

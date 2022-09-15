@@ -26,7 +26,7 @@ import static com.cts.tweetapp.model.User.SEQUENCE_NAME;
 
 @RestController
 @RequestMapping(value = BASE_URL)
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 public class UserController {
 
