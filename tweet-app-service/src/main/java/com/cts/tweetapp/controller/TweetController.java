@@ -24,6 +24,7 @@ import static com.cts.tweetapp.model.Tweet.SEQUENCE_NAME;
 
 @RestController
 @RequestMapping(value = BASE_URL)
+@CrossOrigin(origins = "http://localhost:4200/home")
 @Slf4j
 public class TweetController {
     @Autowired
@@ -75,6 +76,7 @@ public class TweetController {
 
     @GetMapping(value = ALL_TWEET)
     public ResponseEntity<List<Tweet>> getAllTweets(@RequestHeader("Authorization") String authorization) {
+        System.out.println("entered");
         List<Tweet> tweet= tweetService.getAllTweets();
         return ResponseEntity.status(HttpStatus.OK).body(tweet);
     }

@@ -12,5 +12,5 @@ import lombok.*;
 public class JwtResponse {
     private User user;
     private String loginStatus;
-    private String jwtToken;
+    private String token;
 }
